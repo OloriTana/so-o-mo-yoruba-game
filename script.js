@@ -17,6 +17,7 @@ let currentTeamIndex = 0;
 let timerValue = GAME_SECONDS;
 let timerInterval = null;
 let currentQuestion = null;
+let pendingWildQuestions = [];
 let gameActive = false;
 let soundEnabled = false;
 let audioContext = null;
@@ -74,6 +75,7 @@ function startGame() {
   remainingQuestions = [...allQuestions];
   currentTeamIndex = 0;
   currentQuestion = null;
+  pendingWildQuestions = [];
   gameActive = true;
   clearTimer();
   showScreen(gameScreen);
@@ -101,23 +103,88 @@ function renderScoreboard() {
   $("questions-left").textContent = `${remainingQuestions.length} questions left`;
 }
 
-function renderPlaceholder() {
+function renderPlaceholder(message = "Roll the die to find out which question your team gets.") {
+  pendingWildQuestions = [];
   $("question-stage").innerHTML = `
     <div class="question-placeholder">
-      <div class="sparkle-mark">✳</div>
-      <h2>Your question is waiting.</h2>
-      <p>When your team is ready, draw a question and get thinking.</p>
-      <button id="draw-question" class="primary-button draw-button">Draw a question <span aria-hidden="true">↗</span></button>
+      <div class="sparkle-mark">⚄</div>
+      <h2>Roll the die!</h2>
+      <p>${escapeHtml(message)}</p>
+      <button id="draw-question" class="primary-button draw-button">Roll the die <span aria-hidden="true">↗</span></button>
     </div>`;
   $("draw-question").addEventListener("click", drawQuestion);
 }
 
+// The die has five category faces and one WILD face.
 function drawQuestion() {
   if (!gameActive || currentQuestion || remainingQuestions.length === 0) return;
-  const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
-  currentQuestion = remainingQuestions.splice(randomIndex, 1)[0];
+
+  const dieFaces = [...Object.keys(CATEGORY_STYLES), "WILD"];
+  const result = dieFaces[Math.floor(Math.random() * dieFaces.length)];
+
+  if (result === "WILD") {
+    drawWildCard();
+    return;
+  }
+
+  const categoryQuestions = remainingQuestions.filter(question => question.category === result);
+  if (!categoryQuestions.length) {
+    renderPlaceholder(`The die landed on ${result}, but that category has no questions left. Roll again!`);
+    return;
+  }
+
+  const chosen = categoryQuestions[Math.floor(Math.random() * categoryQuestions.length)];
+  selectQuestion(chosen);
+}
+
+function drawWildCard() {
+  const availableCards = [...new Set(remainingQuestions.map(question => question.cardId))];
+  if (!availableCards.length) {
+    renderPlaceholder("There are no questions left to draw. Please end the game.");
+    return;
+  }
+
+  const cardId = availableCards[Math.floor(Math.random() * availableCards.length)];
+  pendingWildQuestions = remainingQuestions.filter(question => question.cardId === cardId);
+  renderWildChoices(cardId);
+}
+
+function renderWildChoices(cardId) {
+  const choices = pendingWildQuestions.map(question => {
+    const style = CATEGORY_STYLES[question.category] || CATEGORY_STYLES.Indigo;
+    return `<button class="wild-choice" type="button" data-question-id="${escapeHtml(question.id)}" style="--choice-bg:${style.bg};--choice-fg:${style.fg}">
+      <span class="wild-choice-category">${escapeHtml(question.category)}</span>
+      <span class="wild-choice-prompt">${escapeHtml(question.prompt)}</span>
+      <span class="wild-choice-arrow" aria-hidden="true">↗</span>
+    </button>`;
+  }).join("");
+
+  $("question-stage").innerHTML = `
+    <div class="wild-panel">
+      <div class="wild-heading"><span class="wild-label">✦ WILD CARD ✦</span><h2>Lucky you! Pick a question.</h2>
+      <p>Card ${escapeHtml(cardId)} has ${pendingWildQuestions.length} available question${pendingWildQuestions.length === 1 ? "" : "s"}. Choose one to start your 30 seconds.</p></div>
+      <div class="wild-choice-list">${choices}</div>
+    </div>`;
+
+  $("question-stage").querySelectorAll(".wild-choice").forEach(button => {
+    button.addEventListener("click", () => chooseWildQuestion(button.dataset.questionId));
+  });
+}
+
+function chooseWildQuestion(questionId) {
+  const chosen = pendingWildQuestions.find(question => question.id === questionId);
+  if (!chosen || currentQuestion) return;
+  selectQuestion(chosen);
+}
+
+function selectQuestion(question) {
+  const index = remainingQuestions.findIndex(item => item.id === question.id);
+  if (index < 0) return;
+  currentQuestion = remainingQuestions.splice(index, 1)[0];
+  pendingWildQuestions = [];
   renderQuestion();
   $("answer-panel").classList.remove("hidden");
+  $("answer-panel").querySelector(".eyebrow").textContent = "TIME'S UP? OR DONE?";
   startTimer();
   renderScoreboard();
 }
@@ -126,7 +193,7 @@ function renderQuestion() {
   const style = CATEGORY_STYLES[currentQuestion.category] || CATEGORY_STYLES.Indigo;
   $("question-stage").innerHTML = `
     <div class="question-card" id="question-card" style="background:${style.bg};color:${style.fg}">
-      <div class="question-kicker">NAME FIVE · ${GAME_SECONDS} SECONDS</div>
+      <div class="question-kicker">NAME FIVE · ${escapeHtml(currentQuestion.category.toUpperCase())} · ${GAME_SECONDS} SECONDS</div>
       <div class="question-text">${escapeHtml(currentQuestion.prompt)}</div>
       <div class="question-footer">
         <span>THINK FAST. NAME FIVE.</span>
@@ -193,11 +260,11 @@ function tone(frequency, duration, volume, type = "sine", delay = 0) {
 
 function playTick(secondsLeft) {
   const frequency = secondsLeft <= 3 ? 620 : 500;
-  tone(frequency, 0.075, 0.035, "sine");
+  tone(frequency, 0.09, 0.10, "sine");
 }
 function playAlarm() {
-  tone(520, 0.18, 0.055, "sine", 0);
-  tone(390, 0.22, 0.05, "sine", 0.2);
+  tone(520, 0.20, 0.16, "sine", 0);
+  tone(390, 0.24, 0.15, "sine", 0.22);
 }
 
 function recordScore(score) {
@@ -260,6 +327,7 @@ function newGame() {
   clearTimer();
   gameActive = false;
   currentQuestion = null;
+  pendingWildQuestions = [];
   $("end-game-early").textContent = "End game";
   showScreen(setupScreen);
   renderTeamFields();
