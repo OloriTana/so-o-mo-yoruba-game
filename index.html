@@ -1,121 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#30343b">
-  <meta name="description" content="Márùn-ún Márùn-ún - Think You Know Yorùbá? Fastest brains wins five!">
-  <title>Márùn-ún Márùn-ún - Think You Know Yorùbá?</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171747">
+  <title>Márùn-ún Márùn-ún | Yoruba Trivia Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page-shell">
-    <header class="topbar">
-      <a class="brand" href="#" id="brandHome" aria-label="Márùn-ún Márùn-ún home">
-        <span class="brand-mark">N5</span>
-        <span>Márùn-ún Márùn-ún <small>Think You Know Yorùbá?</small></span>
-      </a>
-      <button class="quiet-button" id="soundToggle" type="button" aria-pressed="false">Sound: Off</button>
+  <div class="pattern-layer" aria-hidden="true"></div>
+  <main class="app-shell">
+    <header class="brand">
+      <div class="brand-title" aria-label="Márùn-ún Márùn-ún">
+        <span class="brand-first">Márùn-ún</span>
+        <span class="brand-second">Márùn-ún</span>
+      </div>
+      <p class="tagline">Think you know Yoruba? Fastest brain wins five!</p>
+      <p class="game-type">A YORUBA TRIVIA GAME</p>
     </header>
 
-    <main>
-      <section id="welcomeScreen" class="screen welcome-screen">
-        <div class="welcome-copy">
-          <p class="eyebrow">A YORUBA TRIVIA GAME</p>
-          <h1>Márùn-ún Márùn-ún </h1>
-          <p class="tagline">Think You Know Yorùbá? Fastest brain wins five!</p>
-          <p class="intro">A quick-thinking team game celebrating Yoruba language, culture and everyday knowledge.</p>
+    <section id="setup-screen" class="screen setup-layout">
+      <div class="intro-card glass-card">
+        <span class="eyebrow">GATHER YOUR TEAM</span>
+        <h1>Ready to play?</h1>
+        <p>Think fast, name five, and collect points. One shared screen, plenty of friendly competition.</p>
+        <div class="how-to">
+          <div><span class="step-number">01</span><span>Set up your teams.</span></div>
+          <div><span class="step-number">02</span><span>Choose how many turns each team gets.</span></div>
+          <div><span class="step-number">03</span><span>Draw a question and name five answers in 30 seconds.</span></div>
         </div>
-        <div class="setup-card">
-          <h2>Set up your game</h2>
-          <label for="teamCount">Number of teams</label>
-          <select id="teamCount">
-            <option value="2">2 teams</option><option value="3">3 teams</option>
-            <option value="4">4 teams</option><option value="5">5 teams</option>
-            <option value="6">6 teams</option>
-          </select>
-          <div id="teamNames" class="team-name-fields"></div>
-          <button id="startGame" class="primary-button" type="button">Start playing <span>→</span></button>
-          <p class="setup-note">One shared device · 30 seconds per turn</p>
-        </div>
-        <div class="how-card">
-          <h2>How to play</h2>
-          <ol>
-            <li>Divide into teams and take turns.</li>
-            <li>Roll the die. Its colour selects the question.</li>
-            <li>For WILD, choose any one of the five questions.</li>
-            <li>Name five answers before the 30-second timer runs out.</li>
-            <li>Award one point for each valid answer. Maximum: five points per turn.</li>
-            <li>Play until every card has been used. The team with the highest score wins!</li>
-          </ol>
-          <p class="small-note">Players judge their own answers. The game does not check answers automatically.</p>
-        </div>
-      </section>
+      </div>
 
-      <section id="gameScreen" class="screen game-screen hidden">
-        <div class="game-heading">
-          <div><p class="eyebrow">THE GAME IS ON</p><h1>Márùn-ún Márùn-ún</h1></div>
-          <button id="endGame" class="quiet-button" type="button">End game</button>
+      <div class="setup-card glass-card">
+        <div class="section-heading">
+          <span class="eyebrow">GAME SETUP</span>
+          <h2>Who's playing?</h2>
         </div>
-        <div class="game-layout">
-          <section class="play-panel">
-            <div class="turn-strip">
-              <div><span class="muted-label">CURRENT TEAM</span><strong id="currentTeam">Team 1</strong></div>
-              <div class="deck-count"><span class="muted-label">CARDS LEFT</span><strong id="cardsLeft">20</strong></div>
+        <label class="field-label" for="team-count">Number of teams <span>2–4 teams</span></label>
+        <select id="team-count" class="select-control">
+          <option value="2">2 teams</option>
+          <option value="3">3 teams</option>
+          <option value="4">4 teams</option>
+        </select>
+        <div id="team-name-fields" class="team-fields"></div>
+
+        <label class="field-label turns-label" for="turn-count">Turns per team <span>Choose your game length</span></label>
+        <select id="turn-count" class="select-control">
+          <option value="3">3 turns — Quick play</option>
+          <option value="5" selected>5 turns — Standard game</option>
+          <option value="7">7 turns — Longer game</option>
+          <option value="10">10 turns — Extended game</option>
+          <option value="15">15 turns — Marathon</option>
+        </select>
+        <div class="pool-note"><span class="pool-dot"></span><span><strong>100 questions</strong> in the pool. Each question can be played only once per game.</span></div>
+        <button id="start-game" class="primary-button">Start the game <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section id="game-screen" class="screen hidden">
+      <div class="game-topbar">
+        <div class="turn-chip"><span class="live-dot"></span><span id="turn-label">TEAM 1 · TURN 1 OF 5</span></div>
+        <div class="top-actions">
+          <label class="sound-toggle"><input type="checkbox" id="sound-toggle"><span class="toggle-track"></span><span>Sound</span></label>
+          <button id="end-game-early" class="text-button">End game</button>
+        </div>
+      </div>
+
+      <div class="game-grid">
+        <section class="play-column">
+          <div class="current-team-card glass-card">
+            <div>
+              <span class="eyebrow">IT'S YOUR TURN</span>
+              <h2 id="current-team-name">Team 1</h2>
             </div>
-
-            <div id="questionStage" class="question-stage idle">
-              <div class="stage-decoration">✳</div>
-              <p class="stage-kicker" id="stageKicker">READY WHEN YOU ARE</p>
-              <h2 id="questionText">Roll the die to reveal your challenge.</h2>
-              <p id="wildHint" class="wild-hint hidden">WILD! Choose one of the five questions below.</p>
-              <div id="wildChoices" class="wild-choices hidden"></div>
-              <div class="timer-wrap">
-                <div class="timer" id="timer">00:30</div>
-                <div class="timer-track"><div id="timerBar" class="timer-bar"></div></div>
-                <p id="timerStatus">30 seconds to name five!</p>
-              </div>
+            <div class="team-progress">
+              <span id="progress-count">0 / 5 turns</span>
+              <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
             </div>
+          </div>
 
-            <div class="roll-area">
-              <div id="die" class="die die-idle" aria-label="Die result">?</div>
-              <button id="rollButton" class="primary-button roll-button" type="button">Roll the die <span>↻</span></button>
-              <p class="roll-caption">A new card and colour are selected at random.</p>
+          <div id="question-stage" class="question-stage">
+            <div class="question-placeholder">
+              <div class="sparkle-mark">✳</div>
+              <h2>Your question is waiting.</h2>
+              <p>When your team is ready, draw a question and get thinking.</p>
+              <button id="draw-question" class="primary-button draw-button">Draw a question <span aria-hidden="true">↗</span></button>
             </div>
+          </div>
 
-            <div id="scoreEntry" class="score-entry hidden">
-              <label for="turnScore">How many valid answers?</label>
-              <div class="score-entry-row">
-                <select id="turnScore">
-                  <option value="0">0 points</option><option value="1">1 point</option>
-                  <option value="2">2 points</option><option value="3">3 points</option>
-                  <option value="4">4 points</option><option value="5">5 points</option>
-                </select>
-                <button id="submitScore" class="secondary-button" type="button">Save score</button>
-              </div>
+          <div id="answer-panel" class="answer-panel glass-card hidden">
+            <div class="answer-heading">
+              <div><span class="eyebrow">TIME'S UP? OR DONE?</span><h3>How many did your team name?</h3></div>
+              <span class="score-range">0–5 points</span>
             </div>
-          </section>
+            <p class="answer-hint">The team decides how many answers count. Enter the score to pass the turn.</p>
+            <div id="score-buttons" class="score-buttons">
+              <button data-score="0">0</button><button data-score="1">1</button><button data-score="2">2</button>
+              <button data-score="3">3</button><button data-score="4">4</button><button data-score="5">5</button>
+            </div>
+          </div>
+        </section>
 
-          <aside class="score-panel">
-            <div class="score-panel-head"><h2>Scoreboard</h2><span>LIVE SCORES</span></div>
-            <div id="scoreboard" class="scoreboard"></div>
-            <div class="score-foot"><span class="score-dot"></span> Scores are tracked during this game</div>
-          </aside>
+        <aside class="scoreboard glass-card">
+          <div class="scoreboard-heading"><div><span class="eyebrow">THE LEADERBOARD</span><h2>Scoreboard</h2></div><span class="trophy">✦</span></div>
+          <div id="scoreboard-list" class="scoreboard-list"></div>
+          <div class="scoreboard-footer"><span id="questions-left">100 questions left</span><span class="mini-pool"><i></i><i></i><i></i><i></i><i></i></span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="end-screen" class="screen hidden">
+      <div class="end-card glass-card">
+        <span class="eyebrow">THAT'S A WRAP</span>
+        <div class="winner-star">✦</div>
+        <h1 id="end-title">We have a winner!</h1>
+        <p id="winner-message" class="winner-message"></p>
+        <div id="final-scores" class="final-scores"></div>
+        <div class="end-actions">
+          <button id="tie-breaker" class="secondary-button hidden">Play a tie-breaker</button>
+          <button id="new-game" class="primary-button">Play another game <span aria-hidden="true">↻</span></button>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="resultScreen" class="screen result-screen hidden">
-        <p class="eyebrow">GAME COMPLETE</p>
-        <div class="trophy">✦</div>
-        <h1 id="winnerTitle">Well played!</h1>
-        <p id="winnerText">The deck has been exhausted.</p>
-        <div id="finalScores" class="final-scores"></div>
-        <button id="playAgain" class="primary-button" type="button">Play again <span>↻</span></button>
-        <button id="homeButton" class="text-button" type="button">Back to welcome screen</button>
-      </section>
-    </main>
-    <footer><span>MÁRÙN-ÚN MÁRÙN-ÚN</span><span>Think You Know Yorùbá? Fastest brain wins five!</span></footer>
-  </div>
+    <footer class="footer"><span>MADE FOR CURIOUS MINDS & YORUBA CULTURE</span><span>✳</span></footer>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>

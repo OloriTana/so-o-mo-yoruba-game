@@ -1,153 +1,286 @@
-const COLOURS = [
-  {key:"indigo", label:"Indigo", hex:"#3F3C78", text:"#FFFFFF"},
-  {key:"goldenYellow", label:"Golden Yellow", hex:"#E5B83B", text:"#30343B"},
-  {key:"turquoise", label:"Turquoise", hex:"#35AFA5", text:"#30343B"},
-  {key:"brown", label:"Brown", hex:"#8B5E3C", text:"#FFFFFF"},
-  {key:"grey", label:"Grey", hex:"#808080", text:"#FFFFFF"},
-  {key:"wild", label:"WILD", hex:"#30343B", text:"#E5B83B"}
-];
-const DURATION = 30;
-let deck = [], usedIds = [], teams = [], currentTeamIndex = 0;
-let activeCard = null, activeColour = null, chosenWildKey = null;
-let timerInterval = null, secondsLeft = DURATION, roundActive = false, gameStarted = false;
-let soundOn = false, audioContext = null;
+const DATA_URL = "questions.json";
+const GAME_SECONDS = 30;
+const PRESET_TURNS = [3, 5, 7, 10, 15];
+const CATEGORY_STYLES = {
+  "Indigo": { bg: "#7775dc", fg: "#ffffff" },
+  "Golden Yellow": { bg: "#f2bd43", fg: "#282044" },
+  "Turquoise": { bg: "#43d0c5", fg: "#142d3c" },
+  "Brown": { bg: "#a96e49", fg: "#ffffff" },
+  "Grey": { bg: "#aeb4c1", fg: "#20243b" }
+};
 
-const $ = id => document.getElementById(id);
-const screens = ["welcomeScreen","gameScreen","resultScreen"];
-function showScreen(id){ screens.forEach(s=>$(s).classList.toggle("hidden",s!==id)); window.scrollTo({top:0,behavior:"smooth"}); }
-function escapeHtml(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function renderTeamFields(){
-  const count = Number($("teamCount").value);
-  $("teamNames").innerHTML = Array.from({length:count},(_,i)=>`<input maxlength="24" aria-label="Team ${i+1} name" placeholder="Team ${i+1} name" value="Team ${i+1}">`).join("");
+let allQuestions = [];
+let remainingQuestions = [];
+let teams = [];
+let turnsPerTeam = 5;
+let currentTeamIndex = 0;
+let timerValue = GAME_SECONDS;
+let timerInterval = null;
+let currentQuestion = null;
+let gameActive = false;
+let soundEnabled = false;
+let audioContext = null;
+
+const $ = (id) => document.getElementById(id);
+const setupScreen = $("setup-screen");
+const gameScreen = $("game-screen");
+const endScreen = $("end-screen");
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (ch) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[ch]));
 }
-function saveState(){
-  const state={teams,currentTeamIndex,usedIds,gameStarted};
-  try{localStorage.setItem("name5YorubaState",JSON.stringify(state));}catch(e){}
+
+async function loadQuestions() {
+  try {
+    const response = await fetch(DATA_URL);
+    if (!response.ok) throw new Error("Could not load question database.");
+    const data = await response.json();
+    allQuestions = Array.isArray(data.questions) ? data.questions : [];
+    if (!allQuestions.length) throw new Error("The question database is empty.");
+    renderTeamFields();
+  } catch (error) {
+    $("start-game").disabled = true;
+    $("start-game").textContent = "Question database could not load";
+    alert("The question database could not be loaded. Please make sure questions.json is in the same folder as index.html.");
+    console.error(error);
+  }
 }
-function loadQuestions(){
-  return fetch("questions.json").then(r=>{if(!r.ok)throw new Error("Could not load questions.json");return r.json();});
+
+function renderTeamFields() {
+  const count = Number($("team-count").value);
+  const oldValues = [...document.querySelectorAll(".team-name-input")].map(input => input.value);
+  $("team-name-fields").innerHTML = Array.from({ length: count }, (_, index) => {
+    const value = oldValues[index] || `Team ${index + 1}`;
+    return `<input class="team-name-input" type="text" maxlength="24" aria-label="Team ${index + 1} name" data-team-name="${index}" value="${escapeHtml(value)}">`;
+  }).join("");
 }
-function beginGame(){
-  const names=[...$("teamNames").querySelectorAll("input")].map((el,i)=>el.value.trim()||`Team ${i+1}`);
-  teams=names.map(name=>({name,score:0,turns:0}));
-  currentTeamIndex=0;usedIds=[];activeCard=null;activeColour=null;chosenWildKey=null;roundActive=false;gameStarted=true;
-  saveState();renderScoreboard();updateGameInfo();resetQuestionStage();showScreen("gameScreen");
+
+function showScreen(screen) {
+  [setupScreen, gameScreen, endScreen].forEach(item => item.classList.add("hidden"));
+  screen.classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
-function renderScoreboard(){
-  $("scoreboard").innerHTML=teams.map((t,i)=>`<div class="score-row ${i===currentTeamIndex?"active":""}"><div class="score-team">${escapeHtml(t.name)}<small>${t.turns} ${t.turns===1?"turn":"turns"}</small></div><div class="score-value">${t.score}</div></div>`).join("");
-  $("currentTeam").textContent=teams[currentTeamIndex]?.name||"Team 1";
+
+function startGame() {
+  const count = Number($("team-count").value);
+  turnsPerTeam = Number($("turn-count").value);
+  if (!PRESET_TURNS.includes(turnsPerTeam)) return;
+  const names = [...document.querySelectorAll(".team-name-input")].map((input, i) => input.value.trim() || `Team ${i + 1}`);
+  teams = names.slice(0, count).map((name, index) => ({
+    id: index, name, score: 0, turnsPlayed: 0
+  }));
+  remainingQuestions = [...allQuestions];
+  currentTeamIndex = 0;
+  currentQuestion = null;
+  gameActive = true;
+  clearTimer();
+  showScreen(gameScreen);
+  renderScoreboard();
+  renderTurn();
+  renderPlaceholder();
+  $("answer-panel").classList.add("hidden");
 }
-function updateGameInfo(){
-  $("cardsLeft").textContent=String(deck.length-usedIds.length);
+
+function renderTurn() {
+  const team = teams[currentTeamIndex];
+  $("current-team-name").textContent = team.name;
+  $("turn-label").textContent = `${team.name.toUpperCase()} · TURN ${team.turnsPlayed + 1} OF ${turnsPerTeam}`;
+  $("progress-count").textContent = `${team.turnsPlayed} / ${turnsPerTeam} turns`;
+  $("progress-fill").style.width = `${(team.turnsPlayed / turnsPerTeam) * 100}%`;
   renderScoreboard();
 }
-function stopTimer(){if(timerInterval){clearInterval(timerInterval);timerInterval=null;}}
-function resetQuestionStage(){
-  stopTimer();secondsLeft=DURATION;roundActive=false;activeCard=null;activeColour=null;chosenWildKey=null;
-  $("timer").textContent="00:30";$("timerBar").style.width="100%";$("timerStatus").textContent="30 seconds to name five!";
-  $("questionStage").className="question-stage idle";$("stageKicker").textContent="READY WHEN YOU ARE";
-  $("questionText").textContent="Roll the die to reveal your challenge.";
-  $("wildHint").classList.add("hidden");$("wildChoices").classList.add("hidden");$("wildChoices").innerHTML="";
-  $("scoreEntry").classList.add("hidden");$("die").textContent="?";$("die").style.background="#e9e5dc";$("die").style.color="#77766f";
-  $("rollButton").disabled=false;$("rollButton").textContent="Roll the die ↻";
-}
-function chooseRandom(array){return array[Math.floor(Math.random()*array.length)];}
-function rollDie(){
-  if(roundActive)return;
-  if(usedIds.length>=deck.length){finishGame();return;}
-  const remaining=deck.filter(card=>!usedIds.includes(String(card.id)));
-  activeCard=chooseRandom(remaining);usedIds.push(String(activeCard.id));
-  const result=chooseRandom(COLOURS);
-  activeColour=result.key;chosenWildKey=null;
-  $("die").textContent=result.label==="Golden Yellow"?"GOLD":result.label.toUpperCase();
-  $("die").style.background=result.hex;$("die").style.color=result.text;
-  $("die").style.fontSize=result.key==="goldenYellow"?"10px":"12px";
-  $("questionStage").className="question-stage";
-  $("stageKicker").textContent=`CARD ${activeCard.id} · ${result.label.toUpperCase()}`;
-  if(result.key==="wild"){
-    $("questionText").textContent="WILD! Choose your challenge.";
-    $("wildHint").classList.remove("hidden");$("wildChoices").classList.remove("hidden");
-    $("wildChoices").innerHTML=COLOURS.filter(c=>c.key!=="wild").map(c=>`<button class="wild-choice" data-key="${c.key}" type="button"><strong style="color:${c.hex}">${c.label}</strong>${escapeHtml(activeCard[c.key])}</button>`).join("");
-    $("wildChoices").querySelectorAll("button").forEach(btn=>btn.addEventListener("click",()=>selectWild(btn.dataset.key)));
-    $("timerStatus").textContent="Choose one question to start the timer.";
-    $("rollButton").disabled=true;$("rollButton").textContent="Choose a WILD question";
-    $("scoreEntry").classList.add("hidden");saveState();updateGameInfo();return;
-  }
-  showQuestion(result.key);
-  saveState();updateGameInfo();
-}
-function selectWild(key){
-  if(roundActive)return;
-  chosenWildKey=key;
-  $("wildChoices").querySelectorAll("button").forEach(b=>b.classList.toggle("selected",b.dataset.key===key));
-  showQuestion(key);
-}
-function showQuestion(key){
-  const colour=COLOURS.find(c=>c.key===key);
-  $("questionStage").style.background=colour.hex+"18";
-  $("questionStage").style.borderColor=colour.hex+"55";
-  $("stageKicker").textContent=`CARD ${activeCard.id} · ${colour.label.toUpperCase()}`;
-  $("questionText").textContent=activeCard[key];
-  $("questionText").style.color=colour.key==="goldenYellow"?"#30343b":colour.hex;
-  $("wildHint").classList.add("hidden");
-  if(activeColour==="wild"){$("wildChoices").classList.remove("hidden");}
-  else $("wildChoices").classList.add("hidden");
-  $("rollButton").disabled=true;$("rollButton").textContent="Timer running…";
-  startTimer();
-}
-function startTimer(){
-  stopTimer();secondsLeft=DURATION;roundActive=true;
-  $("timerStatus").textContent="Go! Name five before time runs out.";
-  updateTimerDisplay();
-  timerInterval=setInterval(()=>{
-    secondsLeft=Math.max(0,secondsLeft-1);updateTimerDisplay();
-    if(secondsLeft===0){stopTimer();roundActive=false;timeUp();}
-  },1000);
-}
-function updateTimerDisplay(){
-  $("timer").textContent=`00:${String(secondsLeft).padStart(2,"0")}`;
-  $("timerBar").style.width=`${(secondsLeft/DURATION)*100}%`;
-  if(secondsLeft<=8)$("timer").style.color="#a84435";else $("timer").style.color="var(--ink)";
-}
-function timeUp(){
-  $("questionStage").classList.add("time-up");$("timerStatus").textContent="TIME'S UP! Agree on your score.";
-  $("scoreEntry").classList.remove("hidden");$("rollButton").disabled=true;
-  if(soundOn)beep();
-}
-function saveScore(){
-  const score=Number($("turnScore").value);
-  teams[currentTeamIndex].score+=score;teams[currentTeamIndex].turns++;
-  currentTeamIndex=(currentTeamIndex+1)%teams.length;
-  saveState();updateGameInfo();resetQuestionStage();
-  if(usedIds.length>=deck.length){finishGame();}
-}
-function finishGame(){
-  stopTimer();roundActive=false;gameStarted=false;
-  const max=Math.max(...teams.map(t=>t.score));const winners=teams.filter(t=>t.score===max);
-  $("winnerTitle").textContent=winners.length>1?"It's a tie!":`${winners[0].name} wins!`;
-  $("winnerText").textContent=`The deck is complete. ${usedIds.length} cards played.`;
-  $("finalScores").innerHTML=[...teams].sort((a,b)=>b.score-a.score).map(t=>`<div class="final-score"><span>${escapeHtml(t.name)}</span><span>${t.score} points</span></div>`).join("");
-  showScreen("resultScreen");try{localStorage.removeItem("name5YorubaState");}catch(e){}
-}
-function endGameEarly(){
-  if(!confirm("End this game now and see the current scores?"))return;
-  finishGame();
-}
-function playAgain(){beginGame();}
-function beep(){
-  try{audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();const osc=audioContext.createOscillator(),gain=audioContext.createGain();osc.connect(gain);gain.connect(audioContext.destination);osc.frequency.value=660;gain.gain.value=.08;osc.start();osc.stop(audioContext.currentTime+.18);}catch(e){}
-}
-function toggleSound(){soundOn=!soundOn;$("soundToggle").textContent=`Sound: ${soundOn?"On":"Off"}`;$("soundToggle").setAttribute("aria-pressed",String(soundOn));}
-function home(){if(gameStarted&&!confirm("Return to the welcome screen? Your current game will end."))return;stopTimer();gameStarted=false;showScreen("welcomeScreen");}
 
-$("teamCount").addEventListener("change",renderTeamFields);
-$("startGame").addEventListener("click",beginGame);
-$("rollButton").addEventListener("click",rollDie);
-$("submitScore").addEventListener("click",saveScore);
-$("endGame").addEventListener("click",endGameEarly);
-$("playAgain").addEventListener("click",playAgain);
-$("homeButton").addEventListener("click",home);
-$("brandHome").addEventListener("click",e=>{e.preventDefault();home();});
-$("soundToggle").addEventListener("click",toggleSound);
-renderTeamFields();
-loadQuestions().then(data=>{deck=data;if(!deck.length)throw new Error("The question deck is empty.");$("cardsLeft").textContent=String(deck.length);}).catch(err=>{console.error(err);alert("The question deck could not be loaded. Make sure questions.json is in the same folder as index.html.");});
+function renderScoreboard() {
+  $("scoreboard-list").innerHTML = teams.map((team, index) => `
+    <div class="score-row ${index === currentTeamIndex && gameActive ? "active" : ""}">
+      <div><span class="score-team">${escapeHtml(team.name)}</span><span class="score-sub">${team.turnsPlayed} of ${turnsPerTeam} turns played</span></div>
+      <strong class="score-value">${team.score}</strong>
+    </div>`).join("");
+  $("questions-left").textContent = `${remainingQuestions.length} questions left`;
+}
+
+function renderPlaceholder() {
+  $("question-stage").innerHTML = `
+    <div class="question-placeholder">
+      <div class="sparkle-mark">✳</div>
+      <h2>Your question is waiting.</h2>
+      <p>When your team is ready, draw a question and get thinking.</p>
+      <button id="draw-question" class="primary-button draw-button">Draw a question <span aria-hidden="true">↗</span></button>
+    </div>`;
+  $("draw-question").addEventListener("click", drawQuestion);
+}
+
+function drawQuestion() {
+  if (!gameActive || currentQuestion || remainingQuestions.length === 0) return;
+  const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
+  currentQuestion = remainingQuestions.splice(randomIndex, 1)[0];
+  renderQuestion();
+  $("answer-panel").classList.remove("hidden");
+  startTimer();
+  renderScoreboard();
+}
+
+function renderQuestion() {
+  const style = CATEGORY_STYLES[currentQuestion.category] || CATEGORY_STYLES.Indigo;
+  $("question-stage").innerHTML = `
+    <div class="question-card" id="question-card" style="background:${style.bg};color:${style.fg}">
+      <div class="question-kicker">NAME FIVE · ${GAME_SECONDS} SECONDS</div>
+      <div class="question-text">${escapeHtml(currentQuestion.prompt)}</div>
+      <div class="question-footer">
+        <span>THINK FAST. NAME FIVE.</span>
+        <div class="timer-wrap"><span id="timer-number" class="timer-number">${GAME_SECONDS}</span><div class="timer-track"><div id="timer-fill" class="timer-fill"></div></div></div>
+      </div>
+    </div>`;
+}
+
+function startTimer() {
+  clearTimer();
+  timerValue = GAME_SECONDS;
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    timerValue -= 1;
+    updateTimerDisplay();
+    if (soundEnabled && timerValue <= 10 && timerValue > 0) playTick(timerValue);
+    if (timerValue <= 0) {
+      clearTimer();
+      if (soundEnabled) playAlarm();
+      $("timer-number").textContent = "0";
+      $("question-card").classList.add("time-warning");
+      $("answer-panel").querySelector(".eyebrow").textContent = "TIME IS UP!";
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const number = $("timer-number");
+  const fill = $("timer-fill");
+  if (!number || !fill) return;
+  number.textContent = timerValue;
+  fill.style.width = `${(timerValue / GAME_SECONDS) * 100}%`;
+  $("question-card")?.classList.toggle("time-warning", timerValue <= 10);
+}
+
+function clearTimer() {
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = null;
+}
+
+function getAudioContext() {
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtx) return null;
+  if (!audioContext) audioContext = new AudioCtx();
+  if (audioContext.state === "suspended") audioContext.resume();
+  return audioContext;
+}
+
+function tone(frequency, duration, volume, type = "sine", delay = 0) {
+  const ctx = getAudioContext();
+  if (!ctx) return;
+  const oscillator = ctx.createOscillator();
+  const gain = ctx.createGain();
+  oscillator.type = type;
+  oscillator.frequency.setValueAtTime(frequency, ctx.currentTime + delay);
+  gain.gain.setValueAtTime(0.0001, ctx.currentTime + delay);
+  gain.gain.exponentialRampToValueAtTime(volume, ctx.currentTime + delay + 0.015);
+  gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + delay + duration);
+  oscillator.connect(gain);
+  gain.connect(ctx.destination);
+  oscillator.start(ctx.currentTime + delay);
+  oscillator.stop(ctx.currentTime + delay + duration + 0.03);
+}
+
+function playTick(secondsLeft) {
+  const frequency = secondsLeft <= 3 ? 620 : 500;
+  tone(frequency, 0.075, 0.035, "sine");
+}
+function playAlarm() {
+  tone(520, 0.18, 0.055, "sine", 0);
+  tone(390, 0.22, 0.05, "sine", 0.2);
+}
+
+function recordScore(score) {
+  if (!currentQuestion || !gameActive) return;
+  clearTimer();
+  teams[currentTeamIndex].score += Number(score);
+  teams[currentTeamIndex].turnsPlayed += 1;
+  currentQuestion = null;
+  $("answer-panel").classList.add("hidden");
+
+  const finished = teams.every(team => team.turnsPlayed >= turnsPerTeam);
+  if (finished) {
+    endGame();
+    return;
+  }
+  currentTeamIndex = (currentTeamIndex + 1) % teams.length;
+  while (teams[currentTeamIndex].turnsPlayed >= turnsPerTeam) {
+    currentTeamIndex = (currentTeamIndex + 1) % teams.length;
+  }
+  renderTurn();
+  renderPlaceholder();
+  $("answer-panel").querySelector(".eyebrow").textContent = "TIME'S UP? OR DONE?";
+}
+
+function endGame() {
+  gameActive = false;
+  clearTimer();
+  showScreen(endScreen);
+  const highScore = Math.max(...teams.map(team => team.score));
+  const winners = teams.filter(team => team.score === highScore);
+  $("end-title").textContent = winners.length === 1 ? "We have a winner!" : "It's a tie!";
+  $("winner-message").textContent = winners.length === 1
+    ? `${winners[0].name} takes the crown with ${highScore} points. Well played!`
+    : `${winners.map(team => team.name).join(" and ")} are tied on ${highScore} points. Ready for a tie-breaker?`;
+  $("final-scores").innerHTML = [...teams].sort((a,b) => b.score - a.score).map(team =>
+    `<div class="final-score-row"><span>${escapeHtml(team.name)}</span><strong>${team.score} pts</strong></div>`
+  ).join("");
+  $("tie-breaker").classList.toggle("hidden", winners.length < 2);
+}
+
+function startTieBreaker() {
+  const highScore = Math.max(...teams.map(team => team.score));
+  const tied = teams.filter(team => team.score === highScore);
+  alert(`Tie-breaker: ${tied.map(team => team.name).join(" and ")} will each get one extra question. The team with the most points in this tie-breaker wins.`);
+  // Start a fresh, short tie-breaker round for tied teams only.
+  teams = tied.map((team, index) => ({ ...team, id: index, turnsPlayed: 0, tieScore: 0 }));
+  turnsPerTeam = 1;
+  remainingQuestions = remainingQuestions.length ? remainingQuestions : [...allQuestions];
+  currentTeamIndex = 0;
+  gameActive = true;
+  currentQuestion = null;
+  showScreen(gameScreen);
+  renderTurn();
+  renderPlaceholder();
+  $("answer-panel").classList.add("hidden");
+  $("end-game-early").textContent = "End tie-breaker";
+}
+
+function newGame() {
+  clearTimer();
+  gameActive = false;
+  currentQuestion = null;
+  $("end-game-early").textContent = "End game";
+  showScreen(setupScreen);
+  renderTeamFields();
+}
+
+$("team-count").addEventListener("change", renderTeamFields);
+$("start-game").addEventListener("click", startGame);
+$("score-buttons").addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-score]");
+  if (button) recordScore(button.dataset.score);
+});
+$("sound-toggle").addEventListener("change", (event) => {
+  soundEnabled = event.target.checked;
+  if (soundEnabled) {
+    tone(560, 0.08, 0.025);
+  }
+});
+$("end-game-early").addEventListener("click", () => {
+  if (confirm("End the game now and show the current scores?")) endGame();
+});
+$("tie-breaker").addEventListener("click", startTieBreaker);
+$("new-game").addEventListener("click", newGame);
+
+loadQuestions();
