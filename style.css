@@ -171,14 +171,4 @@ body {
 .wild-choice-prompt { font-size: 13px; font-weight: 900; }
 .wild-choice-arrow { font-size: 19px; font-weight: 900; }
 @media (max-width: 480px) { .wild-choice { grid-template-columns: 1fr auto; gap: 5px 10px; padding: 12px; } .wild-choice-category { grid-column: 1; } .wild-choice-prompt { grid-column: 1; } .wild-choice-arrow { grid-column: 2; grid-row: 1 / span 2; } }
-.winner-cowries {
-  width: 110px;
-  height: 90px;
-  margin: 0 auto 16px;
-}
 
-.winner-cowries svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
