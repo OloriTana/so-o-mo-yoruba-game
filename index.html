@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#30343b">
+  <meta name="description" content="Name 5 – Yorùbá Edition. Think fast. Name five. Play together!">
+  <title>Name 5 – Yorùbá Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#" id="brandHome" aria-label="Name 5 home">
+        <span class="brand-mark">N5</span>
+        <span>NAME 5 <small>YORÙBÁ EDITION</small></span>
+      </a>
+      <button class="quiet-button" id="soundToggle" type="button" aria-pressed="false">Sound: Off</button>
+    </header>
+
+    <main>
+      <section id="welcomeScreen" class="screen welcome-screen">
+        <div class="welcome-copy">
+          <p class="eyebrow">A YORUBA PARTY GAME</p>
+          <h1>NAME <span>5</span></h1>
+          <p class="edition">Yorùbá Edition</p>
+          <p class="tagline">Think fast. Name five. Play together!</p>
+          <p class="intro">A quick-thinking team game celebrating Yoruba language, culture and everyday knowledge.</p>
+        </div>
+        <div class="setup-card">
+          <h2>Set up your game</h2>
+          <label for="teamCount">Number of teams</label>
+          <select id="teamCount">
+            <option value="2">2 teams</option><option value="3">3 teams</option>
+            <option value="4">4 teams</option><option value="5">5 teams</option>
+            <option value="6">6 teams</option>
+          </select>
+          <div id="teamNames" class="team-name-fields"></div>
+          <button id="startGame" class="primary-button" type="button">Start playing <span>→</span></button>
+          <p class="setup-note">One shared device · 30 seconds per turn</p>
+        </div>
+        <div class="how-card">
+          <h2>How to play</h2>
+          <ol>
+            <li>Divide into teams and take turns.</li>
+            <li>Roll the die. Its colour selects the question.</li>
+            <li>For WILD, choose any one of the five questions.</li>
+            <li>Name five answers before the 30-second timer runs out.</li>
+            <li>Award one point for each valid answer. Maximum: five points per turn.</li>
+            <li>Play until every card has been used. The team with the highest score wins!</li>
+          </ol>
+          <p class="small-note">Players judge their own answers. The game does not check answers automatically.</p>
+        </div>
+      </section>
+
+      <section id="gameScreen" class="screen game-screen hidden">
+        <div class="game-heading">
+          <div><p class="eyebrow">THE GAME IS ON</p><h1>NAME 5 <span>Yorùbá Edition</span></h1></div>
+          <button id="endGame" class="quiet-button" type="button">End game</button>
+        </div>
+        <div class="game-layout">
+          <section class="play-panel">
+            <div class="turn-strip">
+              <div><span class="muted-label">CURRENT TEAM</span><strong id="currentTeam">Team 1</strong></div>
+              <div class="deck-count"><span class="muted-label">CARDS LEFT</span><strong id="cardsLeft">20</strong></div>
+            </div>
+
+            <div id="questionStage" class="question-stage idle">
+              <div class="stage-decoration">✳</div>
+              <p class="stage-kicker" id="stageKicker">READY WHEN YOU ARE</p>
+              <h2 id="questionText">Roll the die to reveal your challenge.</h2>
+              <p id="wildHint" class="wild-hint hidden">WILD! Choose one of the five questions below.</p>
+              <div id="wildChoices" class="wild-choices hidden"></div>
+              <div class="timer-wrap">
+                <div class="timer" id="timer">00:30</div>
+                <div class="timer-track"><div id="timerBar" class="timer-bar"></div></div>
+                <p id="timerStatus">30 seconds to name five!</p>
+              </div>
+            </div>
+
+            <div class="roll-area">
+              <div id="die" class="die die-idle" aria-label="Die result">?</div>
+              <button id="rollButton" class="primary-button roll-button" type="button">Roll the die <span>↻</span></button>
+              <p class="roll-caption">A new card and colour are selected at random.</p>
+            </div>
+
+            <div id="scoreEntry" class="score-entry hidden">
+              <label for="turnScore">How many valid answers?</label>
+              <div class="score-entry-row">
+                <select id="turnScore">
+                  <option value="0">0 points</option><option value="1">1 point</option>
+                  <option value="2">2 points</option><option value="3">3 points</option>
+                  <option value="4">4 points</option><option value="5">5 points</option>
+                </select>
+                <button id="submitScore" class="secondary-button" type="button">Save score</button>
+              </div>
+            </div>
+          </section>
+
+          <aside class="score-panel">
+            <div class="score-panel-head"><h2>Scoreboard</h2><span>LIVE SCORES</span></div>
+            <div id="scoreboard" class="scoreboard"></div>
+            <div class="score-foot"><span class="score-dot"></span> Scores are tracked during this game</div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="resultScreen" class="screen result-screen hidden">
+        <p class="eyebrow">GAME COMPLETE</p>
+        <div class="trophy">✦</div>
+        <h1 id="winnerTitle">Well played!</h1>
+        <p id="winnerText">The deck has been exhausted.</p>
+        <div id="finalScores" class="final-scores"></div>
+        <button id="playAgain" class="primary-button" type="button">Play again <span>↻</span></button>
+        <button id="homeButton" class="text-button" type="button">Back to welcome screen</button>
+      </section>
+    </main>
+    <footer><span>NAME 5 · YORÙBÁ EDITION</span><span>Think fast. Name five. Play together.</span></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
