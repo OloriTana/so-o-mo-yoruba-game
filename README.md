@@ -1,5 +1,4 @@
-# Name 5 – Yorùbá Edition
-
+# Ṣó O Mọ̀!
 A single-device browser game built with HTML, CSS and JavaScript.
 
 ## Files
@@ -17,7 +16,7 @@ If Python is installed, open a terminal in this folder and run:
 Then visit `http://localhost:8000`.
 
 ## Publish with GitHub Pages
-1. Create a new **public** GitHub repository, for example `name-5-yoruba`.
+1. Create a new **public** GitHub repository, for example `so-o-mo-yoruba-game`.
 2. Upload all four files (`index.html`, `style.css`, `script.js`, `questions.json`) to the repository root.
 3. In the repository, open **Settings → Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
