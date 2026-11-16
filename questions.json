@@ -2,25 +2,25 @@
   "cards": [
     {
       "cardId": 1,
-      "Indigo": "types of poetic chants",
-      "Golden Yellow": "traditional Yoruba titles",
+      "Indigo": "types of oral Yoruba poetry",
+      "Golden Yellow": "traditional Yoruba chieftaincy titles",
       "Turquoise": "foods traditionally cooked or served in leaves",
-      "Brown": "villages in Oyo State",
+      "Brown": "traditional motifs used in àdìrẹ",
       "Grey": "Yoruba names associated strictly with royalty"
     },
     {
       "cardId": 2,
       "Indigo": "Juju musicians",
       "Golden Yellow": "Yoruba names that start with \"Ade\"",
-      "Turquoise": "Yoruba-only radio stations",
+      "Turquoise": "names of Yoruba-only radio stations",
       "Brown": "tourist attractions in Yorubaland",
-      "Grey": "funny Yoruba bus-stops in Lagos"
+      "Grey": "funny Yoruba bus-stop names in Lagos"
     },
     {
       "cardId": 3,
-      "Indigo": "wicked Yoruba actors",
-      "Golden Yellow": "dialect variants of ilé",
-      "Turquoise": "Afrobeats songs that heavily feature the Yoruba language",
+      "Indigo": "wicked Yoruba Nollywood male/female actors",
+      "Golden Yellow": "ways to say ilé in Yoruba dialects",
+      "Turquoise": "slang terms a Yoruba conductor says",
       "Brown": "types of fish popular in Yoruba markets",
       "Grey": "popular Odunlade Adekola movie roles"
     },
@@ -36,7 +36,7 @@
       "cardId": 5,
       "Indigo": "Yoruba gospel musicians",
       "Golden Yellow": "local spices used in Yoruba cooking",
-      "Turquoise": "items found in a Babalawo's shrine",
+      "Turquoise": "items used by a Babalawo",
       "Brown": "common Yoruba proverbs",
       "Grey": "ambiguous Ade-names"
     },
@@ -46,14 +46,14 @@
       "Golden Yellow": "popular markets in South-West Nigeria",
       "Turquoise": "proverbs about hard work",
       "Brown": "traditional Yoruba musical instruments",
-      "Grey": "songs guaranteed to play at a Yoruba wedding reception"
+      "Grey": "Yoruba songs guaranteed to play at a Yoruba wedding reception"
     },
     {
       "cardId": 7,
       "Indigo": "Yoruba taboos",
       "Golden Yellow": "traditional Yoruba drinks",
       "Turquoise": "classic Yoruba Nollywood movies",
-      "Brown": "famous Yoruba streets in Lagos",
+      "Brown": "famous Yoruba street names in Lagos",
       "Grey": "àlọ́ àpamọ̀ with answers"
     },
     {
@@ -66,7 +66,7 @@
     },
     {
       "cardId": 9,
-      "Indigo": "numbers from 20 to 1000 in Yoruba",
+      "Indigo": "odd numbers between 500 and 1000 in Yoruba",
       "Golden Yellow": "famous Yoruba pastors or General Overseers",
       "Turquoise": "styles of traditional Yoruba caps",
       "Brown": "Yoruba words for different family members",
@@ -77,7 +77,7 @@
       "Indigo": "items on the ẹrù ìyàwó list",
       "Golden Yellow": "fruits by their Yoruba names",
       "Turquoise": "Yoruba names that start with \"Odun\"",
-      "Brown": "foods commonly paired with Agege bread",
+      "Brown": "Yoruba foods commonly paired with Agege bread",
       "Grey": "traditional Yoruba festivals"
     },
     {
@@ -91,7 +91,7 @@
     {
       "cardId": 12,
       "Indigo": "traditional Yoruba dance styles",
-      "Golden Yellow": "actors in Saworoide",
+      "Golden Yellow": "notable actors in Saworoide",
       "Turquoise": "sacred rivers in Yorubaland",
       "Brown": "swallows",
       "Grey": "Yoruba terms for the time of day"
@@ -101,7 +101,7 @@
       "Indigo": "Yoruba Nollywood actors",
       "Golden Yellow": "historical sites in Yorubaland",
       "Turquoise": "traditional cooking utensils",
-      "Brown": "types of Yoruba traditional beauty adornments or tribal marks",
+      "Brown": "types of Yoruba tribal marks",
       "Grey": "traditional games played by Yoruba children"
     },
     {
@@ -117,7 +117,7 @@
       "Indigo": "female Yoruba deities",
       "Golden Yellow": "slang words popularized by Yoruba musicians",
       "Turquoise": "prominent people named Femi",
-      "Brown": "monuments in Yorubaland",
+      "Brown": "historical monuments in Yorubaland",
       "Grey": "neighborhoods or areas in Ibadan"
     },
     {
@@ -142,23 +142,263 @@
       "Golden Yellow": "traditional Yoruba professions",
       "Turquoise": "names in multiple birth sequence",
       "Brown": "types of meat in an \"assorted\" stew",
-      "Grey": "distinct ways to greet someone in Yoruba"
+      "Grey": "Yoruba greetings"
     },
     {
       "cardId": 19,
       "Indigo": "orúkọ àmútọ̀runwá",
       "Golden Yellow": "Yoruba cultural superstitions",
-      "Turquoise": "popular Yoruba skit makers",
-      "Brown": "past Nigerian presidents of Yoruba descent",
+      "Turquoise": "popular skit makers who are Yoruba",
+      "Brown": "possible pronunciations of the word 'ogun'",
       "Grey": "countries native to Yoruba people"
     },
     {
       "cardId": 20,
-      "Indigo": "prominent Yoruba royal titles",
+      "Indigo": "prominent Yoruba kingship titles",
       "Golden Yellow": "traditional rites or ceremonies",
       "Turquoise": "slang terms for \"money\" in the South-West",
-      "Brown": "Afrobeats stars of Yoruba descent",
+      "Brown": "distinct letters in Yoruba alphabet",
       "Grey": "types of traditional fabrics"
+    },
+    {
+      "cardId": 21,
+      "Indigo": "Odu in Ifa corpus",
+      "Golden Yellow": "Traditional vocational name",
+      "Turquoise": "Famous Jùjú music albums",
+      "Brown": "words with the low-high tonal sequence",
+      "Grey": "famous towns in Ogun State"
+    },
+    {
+      "cardId": 22,
+      "Indigo": "Symbols or royal regalia associated with a king",
+      "Golden Yellow": "Trees in Yoruba",
+      "Turquoise": "Yorùbá greetings for the rainy season",
+      "Brown": "old Yoruba proverbs that have been reconstructed",
+      "Grey": "Yoruba actors who have died"
+    },
+    {
+      "cardId": 23,
+      "Indigo": "Examples of adverbs",
+      "Golden Yellow": "Seasons/weather in Yoruba",
+      "Turquoise": "Songs by Ebenezer Obey",
+      "Brown": "Yoruba names ending in \"dé\"",
+      "Grey": "Yoruba people in top government positions abroad"
+    },
+    {
+      "cardId": 24,
+      "Indigo": "Types of traditional beads",
+      "Golden Yellow": "Non-fictional authors",
+      "Turquoise": "Members of an extended family",
+      "Brown": "Towns in Ondo state",
+      "Grey": "Items used during a traditional chieftaincy installation"
+    },
+    {
+      "cardId": 25,
+      "Indigo": "Yoruba names for Ifa worshippers",
+      "Golden Yellow": "Key ingredients used specifically to make Ofada stew",
+      "Turquoise": "Farming equipments",
+      "Brown": "Vowels in the Yoruba alphabet",
+      "Grey": "Yorùbá actors who act in English Nollywood movies"
+    },
+    {
+      "cardId": 26,
+      "Indigo": "Breakfast foods commonly eaten in a Yoruba household",
+      "Golden Yellow": "Yoruba names that start with Y",
+      "Turquoise": "Yoruba songs that went viral on TikTok",
+      "Brown": "Wars fought in Yoruba land",
+      "Grey": "Greetings used during celebrations"
+    },
+    {
+      "cardId": 27,
+      "Indigo": "Yoruba dishes or snacks made primarily from corn/maize",
+      "Golden Yellow": "Yoruba names containing the word \"Ọlá\"",
+      "Turquoise": "Schools named after prominent Yoruba people",
+      "Brown": "Words with the mid-low tonal sequence",
+      "Grey": "Yoruba words used to express shock or surprise"
+    },
+    {
+      "cardId": 28,
+      "Indigo": "Months of the year in Yoruba",
+      "Golden Yellow": "Popular heritage sites across Yorubaland",
+      "Turquoise": "Yoruba verbs that are a combination of verb+noun",
+      "Brown": "Yoruba proverbs that mention animals",
+      "Grey": "popular Yoruba chefs on social media"
+    },
+    {
+      "cardId": 29,
+      "Indigo": "Popular Yoruba alága",
+      "Golden Yellow": "traditional tools or utensils found in a Yoruba kitchen",
+      "Turquoise": "Modern professions in Yoruba",
+      "Brown": "Yoruba movie veterans",
+      "Grey": "types of aṣọ òkè"
+    },
+    {
+      "cardId": 30,
+      "Indigo": "War weapons in Yoruba",
+      "Golden Yellow": "Yoruba-speaking towns or cities located outside South-West Nigeria",
+      "Turquoise": "odd numbers between 100 and 500",
+      "Brown": "popular Yoruba movie directors",
+      "Grey": "Euphemistic expressions in Yoruba"
+    },
+    {
+      "cardId": 31,
+      "Indigo": "Yoruba words code mixed into English speech",
+      "Golden Yellow": "historical Nollywood movies",
+      "Turquoise": "contemporary female artists who sing primarily in Yoruba",
+      "Brown": "Names in the Ògún lineage",
+      "Grey": "Yoruba words that cannot be translated into English"
+    },
+    {
+      "cardId": 32,
+      "Indigo": "Songs by King Sunny Adé",
+      "Golden Yellow": "Nollywood actors famous for playing comedy roles",
+      "Turquoise": "Yoruba words and their synonyms",
+      "Brown": "morning routines in Yoruba",
+      "Grey": "Yoruba dialects"
+    },
+    {
+      "cardId": 33,
+      "Indigo": "ways to say someone has died",
+      "Golden Yellow": "Past Yoruba governors",
+      "Turquoise": "Yoruba towns with natural resources",
+      "Brown": "Ways to greet the bereaved",
+      "Grey": "Yoruba stage plays"
+    },
+    {
+      "cardId": 34,
+      "Indigo": "Yoruba Nollywood movies centered on palace or royal kingdom drama",
+      "Golden Yellow": "Soups that can be used to eat pounded yam",
+      "Turquoise": "Male òrìṣà",
+      "Brown": "Yoruba words for household furniture or items",
+      "Grey": "Yoruba tongue twisters"
+    },
+    {
+      "cardId": 35,
+      "Indigo": "Steps in making adire",
+      "Golden Yellow": "Types of traditional headwraps or Gele styling methods",
+      "Turquoise": "types of negative behaviour",
+      "Brown": "Yoruba traditional hairstyles",
+      "Grey": "Countries where Yoruba is spoken"
+    },
+    {
+      "cardId": 36,
+      "Indigo": "Drama books written in Yoruba",
+      "Golden Yellow": "Traditional customs observed when bringing a newborn baby home",
+      "Turquoise": "popular female Afrobeats artists who are Yoruba",
+      "Brown": "Compound Yoruba words made by joining two nouns",
+      "Grey": "Egungun we have in Yoruba land"
+    },
+    {
+      "cardId": 37,
+      "Indigo": "Yoruba idioms",
+      "Golden Yellow": "Cash crops in Yoruba",
+      "Turquoise": "contemporary male artists who sing primarily in Yoruba",
+      "Brown": "Clothing types worn by Yoruba men",
+      "Grey": "Dish variations made from Yam"
+    },
+    {
+      "cardId": 38,
+      "Indigo": "Yorùbá influencers on Instagram",
+      "Golden Yellow": "Yoruba words used to ask questions",
+      "Turquoise": "Food crops in Yoruba",
+      "Brown": "Yoruba words borrowed from English",
+      "Grey": "Yoruba cultural rules of respect towards elders"
+    },
+    {
+      "cardId": 39,
+      "Indigo": "Songs from àlọ́ àpagbè",
+      "Golden Yellow": "Punctuation marks in Yoruba",
+      "Turquoise": "snacks you will find when traveling across the South-West",
+      "Brown": "Traditional hair care items",
+      "Grey": "Yoruba words for household insects or pests"
+    },
+    {
+      "cardId": 40,
+      "Indigo": "Past Ooni of Ife",
+      "Golden Yellow": "Yoruba words borrowed from Arabic",
+      "Turquoise": "Yoruba celebrity tailors or stylists",
+      "Brown": "Yoruba proverbs about parenting or child-rearing",
+      "Grey": "Traditional Yoruba occupations practiced primarily by women"
+    },
+    {
+      "cardId": 41,
+      "Indigo": "Figures of speech in Yoruba",
+      "Golden Yellow": "Local makeup products",
+      "Turquoise": "Proverbs talking about money",
+      "Brown": "Male oríkì names",
+      "Grey": "Adelé in Yoruba land"
+    },
+    {
+      "cardId": 42,
+      "Indigo": "Private universities in five Yoruba states",
+      "Golden Yellow": "Things you hear people say while standing at a crowded Lagos bus stop",
+      "Turquoise": "Famous monuments or historical landmarks in Osun State",
+      "Brown": "Yoruba people famous for activism",
+      "Grey": "Words that end with the nasal vowel AN"
+    },
+    {
+      "cardId": 43,
+      "Indigo": "question words in Yoruba",
+      "Golden Yellow": "Modern appliances in a Yoruba woman's kitchen",
+      "Turquoise": "Popular Yoruba soundtrack singers or composers for Yoruba Nollywood movies",
+      "Brown": "codes of ọmọlúàbí",
+      "Grey": "Things a host offers to welcome a guest into a Yoruba home"
+    },
+    {
+      "cardId": 44,
+      "Indigo": "Yoruba words for directional movement",
+      "Golden Yellow": "Famous markets in Ibadan",
+      "Turquoise": "reflexes in Yoruba",
+      "Brown": "Yoruba words that contain the \"Ṣ\" sound",
+      "Grey": "external parts of the body"
+    },
+    {
+      "cardId": 45,
+      "Indigo": "Even numbers between 55 and 100",
+      "Golden Yellow": "Parts of speech in Yoruba",
+      "Turquoise": "Apala artists",
+      "Brown": "Movies by Mainframe Productions",
+      "Grey": "types of ayẹyẹ in Yoruba"
+    },
+    {
+      "cardId": 46,
+      "Indigo": "motto of Yoruba states in Nigeria",
+      "Golden Yellow": "Current Yoruba rising stars",
+      "Turquoise": "Yoruba words borrowed from English",
+      "Brown": "Meals that can be made with ẹ̀wà",
+      "Grey": "Clothing types worn by Yoruba women"
+    },
+    {
+      "cardId": 47,
+      "Indigo": "Places considered the headquarters of Yoruba land abroad",
+      "Golden Yellow": "Ways to say please",
+      "Turquoise": "Emotions in Yoruba",
+      "Brown": "Women who fought for a worthy cause in Yoruba history",
+      "Grey": "Things we can find in the church"
+    },
+    {
+      "cardId": 48,
+      "Indigo": "Sportspeople of Yoruba origin",
+      "Golden Yellow": "oríkì of different Òrìṣà",
+      "Turquoise": "Examples of simile",
+      "Brown": "Yoruba movies that feature Jide Kosoko",
+      "Grey": "Yoruba snacks that are now packaged for supermarkets"
+    },
+    {
+      "cardId": 49,
+      "Indigo": "Terms of endearment in Yoruba used for loved ones",
+      "Golden Yellow": "Professors in U.S. universities who are Yoruba",
+      "Turquoise": "Yoruba foods or snacks made from àgbàdo",
+      "Brown": "numerals that are multiples of 20",
+      "Grey": "greetings for a pregnant woman"
+    },
+    {
+      "cardId": 50,
+      "Indigo": "Yoruba names for modern gadgets",
+      "Golden Yellow": "souvenirs shared at a Yoruba party",
+      "Turquoise": "famous Yoruba live band",
+      "Brown": "illnesses in Yoruba",
+      "Grey": "insulting words or statements in Yoruba"
     }
   ],
   "questions": [
@@ -166,13 +406,13 @@
       "id": "1-indigo",
       "cardId": 1,
       "category": "Indigo",
-      "prompt": "types of poetic chants"
+      "prompt": "types of oral Yoruba poetry"
     },
     {
       "id": "1-golden-yellow",
       "cardId": 1,
       "category": "Golden Yellow",
-      "prompt": "traditional Yoruba titles"
+      "prompt": "traditional Yoruba chieftaincy titles"
     },
     {
       "id": "1-turquoise",
@@ -184,7 +424,7 @@
       "id": "1-brown",
       "cardId": 1,
       "category": "Brown",
-      "prompt": "villages in Oyo State"
+      "prompt": "traditional motifs used in àdìrẹ"
     },
     {
       "id": "1-grey",
@@ -208,7 +448,7 @@
       "id": "2-turquoise",
       "cardId": 2,
       "category": "Turquoise",
-      "prompt": "Yoruba-only radio stations"
+      "prompt": "names of Yoruba-only radio stations"
     },
     {
       "id": "2-brown",
@@ -220,25 +460,25 @@
       "id": "2-grey",
       "cardId": 2,
       "category": "Grey",
-      "prompt": "funny Yoruba bus-stops in Lagos"
+      "prompt": "funny Yoruba bus-stop names in Lagos"
     },
     {
       "id": "3-indigo",
       "cardId": 3,
       "category": "Indigo",
-      "prompt": "wicked Yoruba actors"
+      "prompt": "wicked Yoruba Nollywood male/female actors"
     },
     {
       "id": "3-golden-yellow",
       "cardId": 3,
       "category": "Golden Yellow",
-      "prompt": "dialect variants of ilé"
+      "prompt": "ways to say ilé in Yoruba dialects"
     },
     {
       "id": "3-turquoise",
       "cardId": 3,
       "category": "Turquoise",
-      "prompt": "Afrobeats songs that heavily feature the Yoruba language"
+      "prompt": "slang terms a Yoruba conductor says"
     },
     {
       "id": "3-brown",
@@ -298,7 +538,7 @@
       "id": "5-turquoise",
       "cardId": 5,
       "category": "Turquoise",
-      "prompt": "items found in a Babalawo's shrine"
+      "prompt": "items used by a Babalawo"
     },
     {
       "id": "5-brown",
@@ -340,7 +580,7 @@
       "id": "6-grey",
       "cardId": 6,
       "category": "Grey",
-      "prompt": "songs guaranteed to play at a Yoruba wedding reception"
+      "prompt": "Yoruba songs guaranteed to play at a Yoruba wedding reception"
     },
     {
       "id": "7-indigo",
@@ -364,7 +604,7 @@
       "id": "7-brown",
       "cardId": 7,
       "category": "Brown",
-      "prompt": "famous Yoruba streets in Lagos"
+      "prompt": "famous Yoruba street names in Lagos"
     },
     {
       "id": "7-grey",
@@ -406,7 +646,7 @@
       "id": "9-indigo",
       "cardId": 9,
       "category": "Indigo",
-      "prompt": "numbers from 20 to 1000 in Yoruba"
+      "prompt": "odd numbers between 500 and 1000 in Yoruba"
     },
     {
       "id": "9-golden-yellow",
@@ -454,7 +694,7 @@
       "id": "10-brown",
       "cardId": 10,
       "category": "Brown",
-      "prompt": "foods commonly paired with Agege bread"
+      "prompt": "Yoruba foods commonly paired with Agege bread"
     },
     {
       "id": "10-grey",
@@ -502,7 +742,7 @@
       "id": "12-golden-yellow",
       "cardId": 12,
       "category": "Golden Yellow",
-      "prompt": "actors in Saworoide"
+      "prompt": "notable actors in Saworoide"
     },
     {
       "id": "12-turquoise",
@@ -544,7 +784,7 @@
       "id": "13-brown",
       "cardId": 13,
       "category": "Brown",
-      "prompt": "types of Yoruba traditional beauty adornments or tribal marks"
+      "prompt": "types of Yoruba tribal marks"
     },
     {
       "id": "13-grey",
@@ -604,7 +844,7 @@
       "id": "15-brown",
       "cardId": 15,
       "category": "Brown",
-      "prompt": "monuments in Yorubaland"
+      "prompt": "historical monuments in Yorubaland"
     },
     {
       "id": "15-grey",
@@ -700,7 +940,7 @@
       "id": "18-grey",
       "cardId": 18,
       "category": "Grey",
-      "prompt": "distinct ways to greet someone in Yoruba"
+      "prompt": "Yoruba greetings"
     },
     {
       "id": "19-indigo",
@@ -718,13 +958,13 @@
       "id": "19-turquoise",
       "cardId": 19,
       "category": "Turquoise",
-      "prompt": "popular Yoruba skit makers"
+      "prompt": "popular skit makers who are Yoruba"
     },
     {
       "id": "19-brown",
       "cardId": 19,
       "category": "Brown",
-      "prompt": "past Nigerian presidents of Yoruba descent"
+      "prompt": "possible pronunciations of the word 'ogun'"
     },
     {
       "id": "19-grey",
@@ -736,7 +976,7 @@
       "id": "20-indigo",
       "cardId": 20,
       "category": "Indigo",
-      "prompt": "prominent Yoruba royal titles"
+      "prompt": "prominent Yoruba kingship titles"
     },
     {
       "id": "20-golden-yellow",
@@ -754,13 +994,913 @@
       "id": "20-brown",
       "cardId": 20,
       "category": "Brown",
-      "prompt": "Afrobeats stars of Yoruba descent"
+      "prompt": "distinct letters in Yoruba alphabet"
     },
     {
       "id": "20-grey",
       "cardId": 20,
       "category": "Grey",
       "prompt": "types of traditional fabrics"
+    },
+    {
+      "id": "21-indigo",
+      "cardId": 21,
+      "category": "Indigo",
+      "prompt": "Odu in Ifa corpus"
+    },
+    {
+      "id": "21-golden-yellow",
+      "cardId": 21,
+      "category": "Golden Yellow",
+      "prompt": "Traditional vocational name"
+    },
+    {
+      "id": "21-turquoise",
+      "cardId": 21,
+      "category": "Turquoise",
+      "prompt": "Famous Jùjú music albums"
+    },
+    {
+      "id": "21-brown",
+      "cardId": 21,
+      "category": "Brown",
+      "prompt": "words with the low-high tonal sequence"
+    },
+    {
+      "id": "21-grey",
+      "cardId": 21,
+      "category": "Grey",
+      "prompt": "famous towns in Ogun State"
+    },
+    {
+      "id": "22-indigo",
+      "cardId": 22,
+      "category": "Indigo",
+      "prompt": "Symbols or royal regalia associated with a king"
+    },
+    {
+      "id": "22-golden-yellow",
+      "cardId": 22,
+      "category": "Golden Yellow",
+      "prompt": "Trees in Yoruba"
+    },
+    {
+      "id": "22-turquoise",
+      "cardId": 22,
+      "category": "Turquoise",
+      "prompt": "Yorùbá greetings for the rainy season"
+    },
+    {
+      "id": "22-brown",
+      "cardId": 22,
+      "category": "Brown",
+      "prompt": "old Yoruba proverbs that have been reconstructed"
+    },
+    {
+      "id": "22-grey",
+      "cardId": 22,
+      "category": "Grey",
+      "prompt": "Yoruba actors who have died"
+    },
+    {
+      "id": "23-indigo",
+      "cardId": 23,
+      "category": "Indigo",
+      "prompt": "Examples of adverbs"
+    },
+    {
+      "id": "23-golden-yellow",
+      "cardId": 23,
+      "category": "Golden Yellow",
+      "prompt": "Seasons/weather in Yoruba"
+    },
+    {
+      "id": "23-turquoise",
+      "cardId": 23,
+      "category": "Turquoise",
+      "prompt": "Songs by Ebenezer Obey"
+    },
+    {
+      "id": "23-brown",
+      "cardId": 23,
+      "category": "Brown",
+      "prompt": "Yoruba names ending in \"dé\""
+    },
+    {
+      "id": "23-grey",
+      "cardId": 23,
+      "category": "Grey",
+      "prompt": "Yoruba people in top government positions abroad"
+    },
+    {
+      "id": "24-indigo",
+      "cardId": 24,
+      "category": "Indigo",
+      "prompt": "Types of traditional beads"
+    },
+    {
+      "id": "24-golden-yellow",
+      "cardId": 24,
+      "category": "Golden Yellow",
+      "prompt": "Non-fictional authors"
+    },
+    {
+      "id": "24-turquoise",
+      "cardId": 24,
+      "category": "Turquoise",
+      "prompt": "Members of an extended family"
+    },
+    {
+      "id": "24-brown",
+      "cardId": 24,
+      "category": "Brown",
+      "prompt": "Towns in Ondo state"
+    },
+    {
+      "id": "24-grey",
+      "cardId": 24,
+      "category": "Grey",
+      "prompt": "Items used during a traditional chieftaincy installation"
+    },
+    {
+      "id": "25-indigo",
+      "cardId": 25,
+      "category": "Indigo",
+      "prompt": "Yoruba names for Ifa worshippers"
+    },
+    {
+      "id": "25-golden-yellow",
+      "cardId": 25,
+      "category": "Golden Yellow",
+      "prompt": "Key ingredients used specifically to make Ofada stew"
+    },
+    {
+      "id": "25-turquoise",
+      "cardId": 25,
+      "category": "Turquoise",
+      "prompt": "Farming equipments"
+    },
+    {
+      "id": "25-brown",
+      "cardId": 25,
+      "category": "Brown",
+      "prompt": "Vowels in the Yoruba alphabet"
+    },
+    {
+      "id": "25-grey",
+      "cardId": 25,
+      "category": "Grey",
+      "prompt": "Yorùbá actors who act in English Nollywood movies"
+    },
+    {
+      "id": "26-indigo",
+      "cardId": 26,
+      "category": "Indigo",
+      "prompt": "Breakfast foods commonly eaten in a Yoruba household"
+    },
+    {
+      "id": "26-golden-yellow",
+      "cardId": 26,
+      "category": "Golden Yellow",
+      "prompt": "Yoruba names that start with Y"
+    },
+    {
+      "id": "26-turquoise",
+      "cardId": 26,
+      "category": "Turquoise",
+      "prompt": "Yoruba songs that went viral on TikTok"
+    },
+    {
+      "id": "26-brown",
+      "cardId": 26,
+      "category": "Brown",
+      "prompt": "Wars fought in Yoruba land"
+    },
+    {
+      "id": "26-grey",
+      "cardId": 26,
+      "category": "Grey",
+      "prompt": "Greetings used during celebrations"
+    },
+    {
+      "id": "27-indigo",
+      "cardId": 27,
+      "category": "Indigo",
+      "prompt": "Yoruba dishes or snacks made primarily from corn/maize"
+    },
+    {
+      "id": "27-golden-yellow",
+      "cardId": 27,
+      "category": "Golden Yellow",
+      "prompt": "Yoruba names containing the word \"Ọlá\""
+    },
+    {
+      "id": "27-turquoise",
+      "cardId": 27,
+      "category": "Turquoise",
+      "prompt": "Schools named after prominent Yoruba people"
+    },
+    {
+      "id": "27-brown",
+      "cardId": 27,
+      "category": "Brown",
+      "prompt": "Words with the mid-low tonal sequence"
+    },
+    {
+      "id": "27-grey",
+      "cardId": 27,
+      "category": "Grey",
+      "prompt": "Yoruba words used to express shock or surprise"
+    },
+    {
+      "id": "28-indigo",
+      "cardId": 28,
+      "category": "Indigo",
+      "prompt": "Months of the year in Yoruba"
+    },
+    {
+      "id": "28-golden-yellow",
+      "cardId": 28,
+      "category": "Golden Yellow",
+      "prompt": "Popular heritage sites across Yorubaland"
+    },
+    {
+      "id": "28-turquoise",
+      "cardId": 28,
+      "category": "Turquoise",
+      "prompt": "Yoruba verbs that are a combination of verb+noun"
+    },
+    {
+      "id": "28-brown",
+      "cardId": 28,
+      "category": "Brown",
+      "prompt": "Yoruba proverbs that mention animals"
+    },
+    {
+      "id": "28-grey",
+      "cardId": 28,
+      "category": "Grey",
+      "prompt": "popular Yoruba chefs on social media"
+    },
+    {
+      "id": "29-indigo",
+      "cardId": 29,
+      "category": "Indigo",
+      "prompt": "Popular Yoruba alága"
+    },
+    {
+      "id": "29-golden-yellow",
+      "cardId": 29,
+      "category": "Golden Yellow",
+      "prompt": "traditional tools or utensils found in a Yoruba kitchen"
+    },
+    {
+      "id": "29-turquoise",
+      "cardId": 29,
+      "category": "Turquoise",
+      "prompt": "Modern professions in Yoruba"
+    },
+    {
+      "id": "29-brown",
+      "cardId": 29,
+      "category": "Brown",
+      "prompt": "Yoruba movie veterans"
+    },
+    {
+      "id": "29-grey",
+      "cardId": 29,
+      "category": "Grey",
+      "prompt": "types of aṣọ òkè"
+    },
+    {
+      "id": "30-indigo",
+      "cardId": 30,
+      "category": "Indigo",
+      "prompt": "War weapons in Yoruba"
+    },
+    {
+      "id": "30-golden-yellow",
+      "cardId": 30,
+      "category": "Golden Yellow",
+      "prompt": "Yoruba-speaking towns or cities located outside South-West Nigeria"
+    },
+    {
+      "id": "30-turquoise",
+      "cardId": 30,
+      "category": "Turquoise",
+      "prompt": "odd numbers between 100 and 500"
+    },
+    {
+      "id": "30-brown",
+      "cardId": 30,
+      "category": "Brown",
+      "prompt": "popular Yoruba movie directors"
+    },
+    {
+      "id": "30-grey",
+      "cardId": 30,
+      "category": "Grey",
+      "prompt": "Euphemistic expressions in Yoruba"
+    },
+    {
+      "id": "31-indigo",
+      "cardId": 31,
+      "category": "Indigo",
+      "prompt": "Yoruba words code mixed into English speech"
+    },
+    {
+      "id": "31-golden-yellow",
+      "cardId": 31,
+      "category": "Golden Yellow",
+      "prompt": "historical Nollywood movies"
+    },
+    {
+      "id": "31-turquoise",
+      "cardId": 31,
+      "category": "Turquoise",
+      "prompt": "contemporary female artists who sing primarily in Yoruba"
+    },
+    {
+      "id": "31-brown",
+      "cardId": 31,
+      "category": "Brown",
+      "prompt": "Names in the Ògún lineage"
+    },
+    {
+      "id": "31-grey",
+      "cardId": 31,
+      "category": "Grey",
+      "prompt": "Yoruba words that cannot be translated into English"
+    },
+    {
+      "id": "32-indigo",
+      "cardId": 32,
+      "category": "Indigo",
+      "prompt": "Songs by King Sunny Adé"
+    },
+    {
+      "id": "32-golden-yellow",
+      "cardId": 32,
+      "category": "Golden Yellow",
+      "prompt": "Nollywood actors famous for playing comedy roles"
+    },
+    {
+      "id": "32-turquoise",
+      "cardId": 32,
+      "category": "Turquoise",
+      "prompt": "Yoruba words and their synonyms"
+    },
+    {
+      "id": "32-brown",
+      "cardId": 32,
+      "category": "Brown",
+      "prompt": "morning routines in Yoruba"
+    },
+    {
+      "id": "32-grey",
+      "cardId": 32,
+      "category": "Grey",
+      "prompt": "Yoruba dialects"
+    },
+    {
+      "id": "33-indigo",
+      "cardId": 33,
+      "category": "Indigo",
+      "prompt": "ways to say someone has died"
+    },
+    {
+      "id": "33-golden-yellow",
+      "cardId": 33,
+      "category": "Golden Yellow",
+      "prompt": "Past Yoruba governors"
+    },
+    {
+      "id": "33-turquoise",
+      "cardId": 33,
+      "category": "Turquoise",
+      "prompt": "Yoruba towns with natural resources"
+    },
+    {
+      "id": "33-brown",
+      "cardId": 33,
+      "category": "Brown",
+      "prompt": "Ways to greet the bereaved"
+    },
+    {
+      "id": "33-grey",
+      "cardId": 33,
+      "category": "Grey",
+      "prompt": "Yoruba stage plays"
+    },
+    {
+      "id": "34-indigo",
+      "cardId": 34,
+      "category": "Indigo",
+      "prompt": "Yoruba Nollywood movies centered on palace or royal kingdom drama"
+    },
+    {
+      "id": "34-golden-yellow",
+      "cardId": 34,
+      "category": "Golden Yellow",
+      "prompt": "Soups that can be used to eat pounded yam"
+    },
+    {
+      "id": "34-turquoise",
+      "cardId": 34,
+      "category": "Turquoise",
+      "prompt": "Male òrìṣà"
+    },
+    {
+      "id": "34-brown",
+      "cardId": 34,
+      "category": "Brown",
+      "prompt": "Yoruba words for household furniture or items"
+    },
+    {
+      "id": "34-grey",
+      "cardId": 34,
+      "category": "Grey",
+      "prompt": "Yoruba tongue twisters"
+    },
+    {
+      "id": "35-indigo",
+      "cardId": 35,
+      "category": "Indigo",
+      "prompt": "Steps in making adire"
+    },
+    {
+      "id": "35-golden-yellow",
+      "cardId": 35,
+      "category": "Golden Yellow",
+      "prompt": "Types of traditional headwraps or Gele styling methods"
+    },
+    {
+      "id": "35-turquoise",
+      "cardId": 35,
+      "category": "Turquoise",
+      "prompt": "types of negative behaviour"
+    },
+    {
+      "id": "35-brown",
+      "cardId": 35,
+      "category": "Brown",
+      "prompt": "Yoruba traditional hairstyles"
+    },
+    {
+      "id": "35-grey",
+      "cardId": 35,
+      "category": "Grey",
+      "prompt": "Countries where Yoruba is spoken"
+    },
+    {
+      "id": "36-indigo",
+      "cardId": 36,
+      "category": "Indigo",
+      "prompt": "Drama books written in Yoruba"
+    },
+    {
+      "id": "36-golden-yellow",
+      "cardId": 36,
+      "category": "Golden Yellow",
+      "prompt": "Traditional customs observed when bringing a newborn baby home"
+    },
+    {
+      "id": "36-turquoise",
+      "cardId": 36,
+      "category": "Turquoise",
+      "prompt": "popular female Afrobeats artists who are Yoruba"
+    },
+    {
+      "id": "36-brown",
+      "cardId": 36,
+      "category": "Brown",
+      "prompt": "Compound Yoruba words made by joining two nouns"
+    },
+    {
+      "id": "36-grey",
+      "cardId": 36,
+      "category": "Grey",
+      "prompt": "Egungun we have in Yoruba land"
+    },
+    {
+      "id": "37-indigo",
+      "cardId": 37,
+      "category": "Indigo",
+      "prompt": "Yoruba idioms"
+    },
+    {
+      "id": "37-golden-yellow",
+      "cardId": 37,
+      "category": "Golden Yellow",
+      "prompt": "Cash crops in Yoruba"
+    },
+    {
+      "id": "37-turquoise",
+      "cardId": 37,
+      "category": "Turquoise",
+      "prompt": "contemporary male artists who sing primarily in Yoruba"
+    },
+    {
+      "id": "37-brown",
+      "cardId": 37,
+      "category": "Brown",
+      "prompt": "Clothing types worn by Yoruba men"
+    },
+    {
+      "id": "37-grey",
+      "cardId": 37,
+      "category": "Grey",
+      "prompt": "Dish variations made from Yam"
+    },
+    {
+      "id": "38-indigo",
+      "cardId": 38,
+      "category": "Indigo",
+      "prompt": "Yorùbá influencers on Instagram"
+    },
+    {
+      "id": "38-golden-yellow",
+      "cardId": 38,
+      "category": "Golden Yellow",
+      "prompt": "Yoruba words used to ask questions"
+    },
+    {
+      "id": "38-turquoise",
+      "cardId": 38,
+      "category": "Turquoise",
+      "prompt": "Food crops in Yoruba"
+    },
+    {
+      "id": "38-brown",
+      "cardId": 38,
+      "category": "Brown",
+      "prompt": "Yoruba words borrowed from English"
+    },
+    {
+      "id": "38-grey",
+      "cardId": 38,
+      "category": "Grey",
+      "prompt": "Yoruba cultural rules of respect towards elders"
+    },
+    {
+      "id": "39-indigo",
+      "cardId": 39,
+      "category": "Indigo",
+      "prompt": "Songs from àlọ́ àpagbè"
+    },
+    {
+      "id": "39-golden-yellow",
+      "cardId": 39,
+      "category": "Golden Yellow",
+      "prompt": "Punctuation marks in Yoruba"
+    },
+    {
+      "id": "39-turquoise",
+      "cardId": 39,
+      "category": "Turquoise",
+      "prompt": "snacks you will find when traveling across the South-West"
+    },
+    {
+      "id": "39-brown",
+      "cardId": 39,
+      "category": "Brown",
+      "prompt": "Traditional hair care items"
+    },
+    {
+      "id": "39-grey",
+      "cardId": 39,
+      "category": "Grey",
+      "prompt": "Yoruba words for household insects or pests"
+    },
+    {
+      "id": "40-indigo",
+      "cardId": 40,
+      "category": "Indigo",
+      "prompt": "Past Ooni of Ife"
+    },
+    {
+      "id": "40-golden-yellow",
+      "cardId": 40,
+      "category": "Golden Yellow",
+      "prompt": "Yoruba words borrowed from Arabic"
+    },
+    {
+      "id": "40-turquoise",
+      "cardId": 40,
+      "category": "Turquoise",
+      "prompt": "Yoruba celebrity tailors or stylists"
+    },
+    {
+      "id": "40-brown",
+      "cardId": 40,
+      "category": "Brown",
+      "prompt": "Yoruba proverbs about parenting or child-rearing"
+    },
+    {
+      "id": "40-grey",
+      "cardId": 40,
+      "category": "Grey",
+      "prompt": "Traditional Yoruba occupations practiced primarily by women"
+    },
+    {
+      "id": "41-indigo",
+      "cardId": 41,
+      "category": "Indigo",
+      "prompt": "Figures of speech in Yoruba"
+    },
+    {
+      "id": "41-golden-yellow",
+      "cardId": 41,
+      "category": "Golden Yellow",
+      "prompt": "Local makeup products"
+    },
+    {
+      "id": "41-turquoise",
+      "cardId": 41,
+      "category": "Turquoise",
+      "prompt": "Proverbs talking about money"
+    },
+    {
+      "id": "41-brown",
+      "cardId": 41,
+      "category": "Brown",
+      "prompt": "Male oríkì names"
+    },
+    {
+      "id": "41-grey",
+      "cardId": 41,
+      "category": "Grey",
+      "prompt": "Adelé in Yoruba land"
+    },
+    {
+      "id": "42-indigo",
+      "cardId": 42,
+      "category": "Indigo",
+      "prompt": "Private universities in five Yoruba states"
+    },
+    {
+      "id": "42-golden-yellow",
+      "cardId": 42,
+      "category": "Golden Yellow",
+      "prompt": "Things you hear people say while standing at a crowded Lagos bus stop"
+    },
+    {
+      "id": "42-turquoise",
+      "cardId": 42,
+      "category": "Turquoise",
+      "prompt": "Famous monuments or historical landmarks in Osun State"
+    },
+    {
+      "id": "42-brown",
+      "cardId": 42,
+      "category": "Brown",
+      "prompt": "Yoruba people famous for activism"
+    },
+    {
+      "id": "42-grey",
+      "cardId": 42,
+      "category": "Grey",
+      "prompt": "Words that end with the nasal vowel AN"
+    },
+    {
+      "id": "43-indigo",
+      "cardId": 43,
+      "category": "Indigo",
+      "prompt": "question words in Yoruba"
+    },
+    {
+      "id": "43-golden-yellow",
+      "cardId": 43,
+      "category": "Golden Yellow",
+      "prompt": "Modern appliances in a Yoruba woman's kitchen"
+    },
+    {
+      "id": "43-turquoise",
+      "cardId": 43,
+      "category": "Turquoise",
+      "prompt": "Popular Yoruba soundtrack singers or composers for Yoruba Nollywood movies"
+    },
+    {
+      "id": "43-brown",
+      "cardId": 43,
+      "category": "Brown",
+      "prompt": "codes of ọmọlúàbí"
+    },
+    {
+      "id": "43-grey",
+      "cardId": 43,
+      "category": "Grey",
+      "prompt": "Things a host offers to welcome a guest into a Yoruba home"
+    },
+    {
+      "id": "44-indigo",
+      "cardId": 44,
+      "category": "Indigo",
+      "prompt": "Yoruba words for directional movement"
+    },
+    {
+      "id": "44-golden-yellow",
+      "cardId": 44,
+      "category": "Golden Yellow",
+      "prompt": "Famous markets in Ibadan"
+    },
+    {
+      "id": "44-turquoise",
+      "cardId": 44,
+      "category": "Turquoise",
+      "prompt": "reflexes in Yoruba"
+    },
+    {
+      "id": "44-brown",
+      "cardId": 44,
+      "category": "Brown",
+      "prompt": "Yoruba words that contain the \"Ṣ\" sound"
+    },
+    {
+      "id": "44-grey",
+      "cardId": 44,
+      "category": "Grey",
+      "prompt": "external parts of the body"
+    },
+    {
+      "id": "45-indigo",
+      "cardId": 45,
+      "category": "Indigo",
+      "prompt": "Even numbers between 55 and 100"
+    },
+    {
+      "id": "45-golden-yellow",
+      "cardId": 45,
+      "category": "Golden Yellow",
+      "prompt": "Parts of speech in Yoruba"
+    },
+    {
+      "id": "45-turquoise",
+      "cardId": 45,
+      "category": "Turquoise",
+      "prompt": "Apala artists"
+    },
+    {
+      "id": "45-brown",
+      "cardId": 45,
+      "category": "Brown",
+      "prompt": "Movies by Mainframe Productions"
+    },
+    {
+      "id": "45-grey",
+      "cardId": 45,
+      "category": "Grey",
+      "prompt": "types of ayẹyẹ in Yoruba"
+    },
+    {
+      "id": "46-indigo",
+      "cardId": 46,
+      "category": "Indigo",
+      "prompt": "motto of Yoruba states in Nigeria"
+    },
+    {
+      "id": "46-golden-yellow",
+      "cardId": 46,
+      "category": "Golden Yellow",
+      "prompt": "Current Yoruba rising stars"
+    },
+    {
+      "id": "46-turquoise",
+      "cardId": 46,
+      "category": "Turquoise",
+      "prompt": "Yoruba words borrowed from English"
+    },
+    {
+      "id": "46-brown",
+      "cardId": 46,
+      "category": "Brown",
+      "prompt": "Meals that can be made with ẹ̀wà"
+    },
+    {
+      "id": "46-grey",
+      "cardId": 46,
+      "category": "Grey",
+      "prompt": "Clothing types worn by Yoruba women"
+    },
+    {
+      "id": "47-indigo",
+      "cardId": 47,
+      "category": "Indigo",
+      "prompt": "Places considered the headquarters of Yoruba land abroad"
+    },
+    {
+      "id": "47-golden-yellow",
+      "cardId": 47,
+      "category": "Golden Yellow",
+      "prompt": "Ways to say please"
+    },
+    {
+      "id": "47-turquoise",
+      "cardId": 47,
+      "category": "Turquoise",
+      "prompt": "Emotions in Yoruba"
+    },
+    {
+      "id": "47-brown",
+      "cardId": 47,
+      "category": "Brown",
+      "prompt": "Women who fought for a worthy cause in Yoruba history"
+    },
+    {
+      "id": "47-grey",
+      "cardId": 47,
+      "category": "Grey",
+      "prompt": "Things we can find in the church"
+    },
+    {
+      "id": "48-indigo",
+      "cardId": 48,
+      "category": "Indigo",
+      "prompt": "Sportspeople of Yoruba origin"
+    },
+    {
+      "id": "48-golden-yellow",
+      "cardId": 48,
+      "category": "Golden Yellow",
+      "prompt": "oríkì of different Òrìṣà"
+    },
+    {
+      "id": "48-turquoise",
+      "cardId": 48,
+      "category": "Turquoise",
+      "prompt": "Examples of simile"
+    },
+    {
+      "id": "48-brown",
+      "cardId": 48,
+      "category": "Brown",
+      "prompt": "Yoruba movies that feature Jide Kosoko"
+    },
+    {
+      "id": "48-grey",
+      "cardId": 48,
+      "category": "Grey",
+      "prompt": "Yoruba snacks that are now packaged for supermarkets"
+    },
+    {
+      "id": "49-indigo",
+      "cardId": 49,
+      "category": "Indigo",
+      "prompt": "Terms of endearment in Yoruba used for loved ones"
+    },
+    {
+      "id": "49-golden-yellow",
+      "cardId": 49,
+      "category": "Golden Yellow",
+      "prompt": "Professors in U.S. universities who are Yoruba"
+    },
+    {
+      "id": "49-turquoise",
+      "cardId": 49,
+      "category": "Turquoise",
+      "prompt": "Yoruba foods or snacks made from àgbàdo"
+    },
+    {
+      "id": "49-brown",
+      "cardId": 49,
+      "category": "Brown",
+      "prompt": "numerals that are multiples of 20"
+    },
+    {
+      "id": "49-grey",
+      "cardId": 49,
+      "category": "Grey",
+      "prompt": "greetings for a pregnant woman"
+    },
+    {
+      "id": "50-indigo",
+      "cardId": 50,
+      "category": "Indigo",
+      "prompt": "Yoruba names for modern gadgets"
+    },
+    {
+      "id": "50-golden-yellow",
+      "cardId": 50,
+      "category": "Golden Yellow",
+      "prompt": "souvenirs shared at a Yoruba party"
+    },
+    {
+      "id": "50-turquoise",
+      "cardId": 50,
+      "category": "Turquoise",
+      "prompt": "famous Yoruba live band"
+    },
+    {
+      "id": "50-brown",
+      "cardId": 50,
+      "category": "Brown",
+      "prompt": "illnesses in Yoruba"
+    },
+    {
+      "id": "50-grey",
+      "cardId": 50,
+      "category": "Grey",
+      "prompt": "insulting words or statements in Yoruba"
     }
   ]
 }
